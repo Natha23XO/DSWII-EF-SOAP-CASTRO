@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.22 a las 11:09:23 PM PET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.cibertec.edu.pe/ws/object">
+    <schemaBindings map="false">
+      <package name="pe.edu.cibertec.ws.object"/>
+    </schemaBindings>
+    <bindings scd="tns:postEspecialidadRequest">
+      <class ref="pe.edu.cibertec.ws.object.PostEspecialidadRequest"/>
+    </bindings>
+    <bindings scd="~tns:especialidadws">
+      <class ref="pe.edu.cibertec.ws.object.Especialidadws"/>
+    </bindings>
+    <bindings scd="tns:postEspecialidadResponse">
+      <class ref="pe.edu.cibertec.ws.object.PostEspecialidadResponse"/>
+    </bindings>
+    <bindings scd="tns:putEspecialidadRequest">
+      <class ref="pe.edu.cibertec.ws.object.PutEspecialidadRequest"/>
+    </bindings>
+    <bindings scd="tns:putEspecialidadResponse">
+      <class ref="pe.edu.cibertec.ws.object.PutEspecialidadResponse"/>
+    </bindings>
+    <bindings scd="tns:getEspecialidadesRequest">
+      <class ref="pe.edu.cibertec.ws.object.GetEspecialidadesRequest"/>
+    </bindings>
+    <bindings scd="tns:getEspecialidadesResponse">
+      <class ref="pe.edu.cibertec.ws.object.GetEspecialidadesResponse"/>
+    </bindings>
+    <bindings scd="tns:getEspecialidadRequest">
+      <class ref="pe.edu.cibertec.ws.object.GetEspecialidadRequest"/>
+    </bindings>
+    <bindings scd="tns:getEspecialidadResponse">
+      <class ref="pe.edu.cibertec.ws.object.GetEspecialidadResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

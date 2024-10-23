@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.22 a las 10:41:54 PM PET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.cibertec.edu.pe/ws/object">
+    <schemaBindings map="false">
+      <package name="pe.edu.cibertec.ws.object"/>
+    </schemaBindings>
+    <bindings scd="tns:postMedicamentoRequest">
+      <class ref="pe.edu.cibertec.ws.object.PostMedicamentoRequest"/>
+    </bindings>
+    <bindings scd="~tns:medicamentows">
+      <class ref="pe.edu.cibertec.ws.object.Medicamentows"/>
+    </bindings>
+    <bindings scd="tns:postMedicamentoResponse">
+      <class ref="pe.edu.cibertec.ws.object.PostMedicamentoResponse"/>
+    </bindings>
+    <bindings scd="tns:putMedicamentoRequest">
+      <class ref="pe.edu.cibertec.ws.object.PutMedicamentoRequest"/>
+    </bindings>
+    <bindings scd="tns:putMedicamentoResponse">
+      <class ref="pe.edu.cibertec.ws.object.PutMedicamentoResponse"/>
+    </bindings>
+    <bindings scd="tns:getMedicamentosRequest">
+      <class ref="pe.edu.cibertec.ws.object.GetMedicamentosRequest"/>
+    </bindings>
+    <bindings scd="tns:getMedicamentosResponse">
+      <class ref="pe.edu.cibertec.ws.object.GetMedicamentosResponse"/>
+    </bindings>
+    <bindings scd="tns:getMedicamentoRequest">
+      <class ref="pe.edu.cibertec.ws.object.GetMedicamentoRequest"/>
+    </bindings>
+    <bindings scd="tns:getMedicamentoResponse">
+      <class ref="pe.edu.cibertec.ws.object.GetMedicamentoResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

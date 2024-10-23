@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="9dd0916b-5beb-4052-bd2a-6ec75247de61" activeEnvironment="Default" name="EF-Castro-Hugo" resourceRoot="" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="cff8c07f-8a60-42a3-8067-3a890af23887" wsaVersion="NONE" name="PacientesPortSoap11" type="wsdl" bindingName="{http://www.cibertec.edu.pe/ws/object}PacientesPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/pacientes.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/pacientes.wsdl"><con:part><con:url>http://localhost:8080/ws/pacientes.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.cibertec.edu.pe/ws/object" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.cibertec.edu.pe/ws/object" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.cibertec.edu.pe/ws/object">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.cibertec.edu.pe/ws/object" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--Modelo Paciente-->
+      <xs:complexType name="pacientews">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="direccion" type="xs:string"/>
+          <xs:element name="telefono" type="xs:string"/>
+          <xs:element name="fechanacimiento" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--POST Paciente-->
+      <xs:element name="postPacienteRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="paciente" type="tns:pacientews"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="postPacienteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="paciente" type="tns:pacientews"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--PUT Paciente-->
+      <xs:element name="putPacienteRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="paciente" type="tns:pacientews"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="putPacienteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="paciente" type="tns:pacientews"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Pacientes busqueda general-->
+      <xs:element name="getPacientesRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPacientesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="pacientes" type="tns:pacientews"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Paciente busqueda por ID-->
+      <xs:element name="getPacienteRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPacienteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="paciente" type="tns:pacientews"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPacienteResponse">
+    <wsdl:part element="tns:getPacienteResponse" name="getPacienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putPacienteResponse">
+    <wsdl:part element="tns:putPacienteResponse" name="putPacienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postPacienteResponse">
+    <wsdl:part element="tns:postPacienteResponse" name="postPacienteResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPacientesRequest">
+    <wsdl:part element="tns:getPacientesRequest" name="getPacientesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPacienteRequest">
+    <wsdl:part element="tns:getPacienteRequest" name="getPacienteRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPacientesResponse">
+    <wsdl:part element="tns:getPacientesResponse" name="getPacientesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postPacienteRequest">
+    <wsdl:part element="tns:postPacienteRequest" name="postPacienteRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putPacienteRequest">
+    <wsdl:part element="tns:putPacienteRequest" name="putPacienteRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PacientesPort">
+    <wsdl:operation name="getPaciente">
+      <wsdl:input message="tns:getPacienteRequest" name="getPacienteRequest"></wsdl:input>
+      <wsdl:output message="tns:getPacienteResponse" name="getPacienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putPaciente">
+      <wsdl:input message="tns:putPacienteRequest" name="putPacienteRequest"></wsdl:input>
+      <wsdl:output message="tns:putPacienteResponse" name="putPacienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postPaciente">
+      <wsdl:input message="tns:postPacienteRequest" name="postPacienteRequest"></wsdl:input>
+      <wsdl:output message="tns:postPacienteResponse" name="postPacienteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPacientes">
+      <wsdl:input message="tns:getPacientesRequest" name="getPacientesRequest"></wsdl:input>
+      <wsdl:output message="tns:getPacientesResponse" name="getPacientesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PacientesPortSoap11" type="tns:PacientesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPaciente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPacienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPacienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putPaciente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="putPacienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putPacienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postPaciente">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postPacienteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postPacienteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPacientes">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getPacientesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPacientesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PacientesPortService">
+    <wsdl:port binding="tns:PacientesPortSoap11" name="PacientesPortSoap11">
+      <soap:address location="http://localhost:8080/ws/paciente"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws/paciente</con:endpoint></con:endpoints><con:operation id="0052b0b6-796f-4680-9890-188b4fa12685" isOneWay="false" action="" name="getPaciente" bindingOperationName="getPaciente" type="Request-Response" outputName="getPacienteResponse" inputName="getPacienteRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="04f1579e-e6b9-4b5c-a5e0-d3d874bc95a8" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/paciente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getPacienteRequest>\r
+         <obj:id>2</obj:id>\r
+      </obj:getPacienteRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/PacientesPort/getPacienteRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5769a627-c3a0-4c7d-92a4-5c6f8c80d641" isOneWay="false" action="" name="getPacientes" bindingOperationName="getPacientes" type="Request-Response" outputName="getPacientesResponse" inputName="getPacientesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="165a2bbe-808c-47f6-8f60-77da4dfea3e3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/paciente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getPacientesRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/PacientesPort/getPacientesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4501253d-2625-4eb9-8663-15cf5617fe8a" isOneWay="false" action="" name="postPaciente" bindingOperationName="postPaciente" type="Request-Response" outputName="postPacienteResponse" inputName="postPacienteRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="05a0c48e-fc67-4050-a83c-c8c40c6378bc" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/paciente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postPacienteRequest>\r
+         <obj:paciente>\r
+            <obj:id>?</obj:id>\r
+            <obj:nombre>Emilia Martinez</obj:nombre>\r
+            <obj:direccion>Ejemplo</obj:direccion>\r
+            <obj:telefono>910208312</obj:telefono>\r
+            <obj:fechanacimiento>23-03-05</obj:fechanacimiento>\r
+         </obj:paciente>\r
+      </obj:postPacienteRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/PacientesPort/postPacienteRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d082724f-c346-4a37-b2cd-20ea9cf017b7" isOneWay="false" action="" name="putPaciente" bindingOperationName="putPaciente" type="Request-Response" outputName="putPacienteResponse" inputName="putPacienteRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc2bf663-0d8f-420a-872f-4c0c7c33f0fa" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/paciente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:putPacienteRequest>\r
+         <obj:paciente>\r
+            <obj:id>9</obj:id>\r
+            <obj:nombre>Emilia Martinez Leon</obj:nombre>\r
+            <obj:direccion>Nose Ejmplo</obj:direccion>\r
+            <obj:telefono>910209321</obj:telefono>\r
+            <obj:fechanacimiento>23-03-20</obj:fechanacimiento>\r
+         </obj:paciente>\r
+      </obj:putPacienteRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/PacientesPort/putPacienteRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="90dfd858-21ca-4536-97c7-9c781011aa61" wsaVersion="NONE" name="MedicamentosPortSoap11" type="wsdl" bindingName="{http://www.cibertec.edu.pe/ws/object}MedicamentosPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/medicamentos.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/medicamentos.wsdl"><con:part><con:url>http://localhost:8080/ws/medicamentos.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.cibertec.edu.pe/ws/object" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.cibertec.edu.pe/ws/object" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.cibertec.edu.pe/ws/object">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.cibertec.edu.pe/ws/object" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--Modelo Medicamento-->
+      <xs:complexType name="medicamentows">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="descripcion" type="xs:string"/>
+          <xs:element name="precio" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--POST Medicamento-->
+      <xs:element name="postMedicamentoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="medicamento" type="tns:medicamentows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="postMedicamentoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="medicamento" type="tns:medicamentows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--PUT Medicamento-->
+      <xs:element name="putMedicamentoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="medicamento" type="tns:medicamentows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="putMedicamentoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="medicamento" type="tns:medicamentows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Medicamentos busqueda general-->
+      <xs:element name="getMedicamentosRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getMedicamentosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="medicamentos" type="tns:medicamentows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Medicamento busqueda por ID-->
+      <xs:element name="getMedicamentoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getMedicamentoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="medicamento" type="tns:medicamentows"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getMedicamentosResponse">
+    <wsdl:part element="tns:getMedicamentosResponse" name="getMedicamentosResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMedicamentosRequest">
+    <wsdl:part element="tns:getMedicamentosRequest" name="getMedicamentosRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putMedicamentoRequest">
+    <wsdl:part element="tns:putMedicamentoRequest" name="putMedicamentoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putMedicamentoResponse">
+    <wsdl:part element="tns:putMedicamentoResponse" name="putMedicamentoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postMedicamentoRequest">
+    <wsdl:part element="tns:postMedicamentoRequest" name="postMedicamentoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postMedicamentoResponse">
+    <wsdl:part element="tns:postMedicamentoResponse" name="postMedicamentoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMedicamentoResponse">
+    <wsdl:part element="tns:getMedicamentoResponse" name="getMedicamentoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMedicamentoRequest">
+    <wsdl:part element="tns:getMedicamentoRequest" name="getMedicamentoRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MedicamentosPort">
+    <wsdl:operation name="getMedicamentos">
+      <wsdl:input message="tns:getMedicamentosRequest" name="getMedicamentosRequest"></wsdl:input>
+      <wsdl:output message="tns:getMedicamentosResponse" name="getMedicamentosResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putMedicamento">
+      <wsdl:input message="tns:putMedicamentoRequest" name="putMedicamentoRequest"></wsdl:input>
+      <wsdl:output message="tns:putMedicamentoResponse" name="putMedicamentoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postMedicamento">
+      <wsdl:input message="tns:postMedicamentoRequest" name="postMedicamentoRequest"></wsdl:input>
+      <wsdl:output message="tns:postMedicamentoResponse" name="postMedicamentoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMedicamento">
+      <wsdl:input message="tns:getMedicamentoRequest" name="getMedicamentoRequest"></wsdl:input>
+      <wsdl:output message="tns:getMedicamentoResponse" name="getMedicamentoResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MedicamentosPortSoap11" type="tns:MedicamentosPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getMedicamentos">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getMedicamentosRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMedicamentosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putMedicamento">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="putMedicamentoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putMedicamentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postMedicamento">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postMedicamentoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postMedicamentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMedicamento">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getMedicamentoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMedicamentoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MedicamentosPortService">
+    <wsdl:port binding="tns:MedicamentosPortSoap11" name="MedicamentosPortSoap11">
+      <soap:address location="http://localhost:8080/ws/medicamento"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws/medicamento</con:endpoint></con:endpoints><con:operation id="54c503c6-3a5b-4987-8819-202730a35fa3" isOneWay="false" action="" name="getMedicamento" bindingOperationName="getMedicamento" type="Request-Response" outputName="getMedicamentoResponse" inputName="getMedicamentoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9003d88a-081b-43ab-bf79-a918938c9317" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/medicamento</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getMedicamentoRequest>\r
+         <obj:id>5</obj:id>\r
+      </obj:getMedicamentoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/MedicamentosPort/getMedicamentoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3c960748-8dd9-44a8-b1da-d14ea339d31c" isOneWay="false" action="" name="getMedicamentos" bindingOperationName="getMedicamentos" type="Request-Response" outputName="getMedicamentosResponse" inputName="getMedicamentosRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dbebd824-6bf4-4d66-84c7-eea47faab4b4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/medicamento</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getMedicamentosRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/MedicamentosPort/getMedicamentosRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c3de6c99-7419-480a-ba58-4692b529ad05" isOneWay="false" action="" name="postMedicamento" bindingOperationName="postMedicamento" type="Request-Response" outputName="postMedicamentoResponse" inputName="postMedicamentoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="54cf32c9-0082-4db8-b581-c85a7a08a047" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/medicamento</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postMedicamentoRequest>\r
+         <obj:medicamento>\r
+            <obj:id>?</obj:id>\r
+            <obj:nombre>Prueba de Medicamento</obj:nombre>\r
+            <obj:descripcion>Descripcion de prueba</obj:descripcion>\r
+            <obj:precio>10.21</obj:precio>\r
+         </obj:medicamento>\r
+      </obj:postMedicamentoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/MedicamentosPort/postMedicamentoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="519ea855-3381-479b-8c07-614b5ebe46a6" isOneWay="false" action="" name="putMedicamento" bindingOperationName="putMedicamento" type="Request-Response" outputName="putMedicamentoResponse" inputName="putMedicamentoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5c9a9803-6bd5-47e2-a1dd-16df8916ef6d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/medicamento</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:putMedicamentoRequest>\r
+         <obj:medicamento>\r
+            <obj:id>9</obj:id>\r
+            <obj:nombre>Prueba de actualizar medic</obj:nombre>\r
+            <obj:descripcion>Descripcion cambiada</obj:descripcion>\r
+            <obj:precio>17.72</obj:precio>\r
+         </obj:medicamento>\r
+      </obj:putMedicamentoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/MedicamentosPort/putMedicamentoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="0c85fb86-dc2e-4c10-8cdb-59e8adf54099" wsaVersion="NONE" name="EspecialidadesPortSoap11" type="wsdl" bindingName="{http://www.cibertec.edu.pe/ws/object}EspecialidadesPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/especialidades.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/especialidades.wsdl"><con:part><con:url>http://localhost:8080/ws/especialidades.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.cibertec.edu.pe/ws/object" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.cibertec.edu.pe/ws/object" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.cibertec.edu.pe/ws/object">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.cibertec.edu.pe/ws/object" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--Modelo Especialidad-->
+      <xs:complexType name="especialidadws">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="descripcion" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--POST Especialidad-->
+      <xs:element name="postEspecialidadRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="especialidad" type="tns:especialidadws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="postEspecialidadResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="especialidad" type="tns:especialidadws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--PUT Especialidad-->
+      <xs:element name="putEspecialidadRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="especialidad" type="tns:especialidadws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="putEspecialidadResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="especialidad" type="tns:especialidadws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Especialidades busqueda general-->
+      <xs:element name="getEspecialidadesRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEspecialidadesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="especialidades" type="tns:especialidadws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Especialidad busqueda por ID-->
+      <xs:element name="getEspecialidadRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getEspecialidadResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="especialidad" type="tns:especialidadws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getEspecialidadesRequest">
+    <wsdl:part element="tns:getEspecialidadesRequest" name="getEspecialidadesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEspecialidadResponse">
+    <wsdl:part element="tns:getEspecialidadResponse" name="getEspecialidadResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putEspecialidadResponse">
+    <wsdl:part element="tns:putEspecialidadResponse" name="putEspecialidadResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEspecialidadesResponse">
+    <wsdl:part element="tns:getEspecialidadesResponse" name="getEspecialidadesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postEspecialidadResponse">
+    <wsdl:part element="tns:postEspecialidadResponse" name="postEspecialidadResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putEspecialidadRequest">
+    <wsdl:part element="tns:putEspecialidadRequest" name="putEspecialidadRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postEspecialidadRequest">
+    <wsdl:part element="tns:postEspecialidadRequest" name="postEspecialidadRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEspecialidadRequest">
+    <wsdl:part element="tns:getEspecialidadRequest" name="getEspecialidadRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EspecialidadesPort">
+    <wsdl:operation name="getEspecialidades">
+      <wsdl:input message="tns:getEspecialidadesRequest" name="getEspecialidadesRequest"></wsdl:input>
+      <wsdl:output message="tns:getEspecialidadesResponse" name="getEspecialidadesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEspecialidad">
+      <wsdl:input message="tns:getEspecialidadRequest" name="getEspecialidadRequest"></wsdl:input>
+      <wsdl:output message="tns:getEspecialidadResponse" name="getEspecialidadResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putEspecialidad">
+      <wsdl:input message="tns:putEspecialidadRequest" name="putEspecialidadRequest"></wsdl:input>
+      <wsdl:output message="tns:putEspecialidadResponse" name="putEspecialidadResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postEspecialidad">
+      <wsdl:input message="tns:postEspecialidadRequest" name="postEspecialidadRequest"></wsdl:input>
+      <wsdl:output message="tns:postEspecialidadResponse" name="postEspecialidadResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EspecialidadesPortSoap11" type="tns:EspecialidadesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getEspecialidades">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEspecialidadesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEspecialidadesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEspecialidad">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEspecialidadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEspecialidadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putEspecialidad">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="putEspecialidadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putEspecialidadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postEspecialidad">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postEspecialidadRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postEspecialidadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EspecialidadesPortService">
+    <wsdl:port binding="tns:EspecialidadesPortSoap11" name="EspecialidadesPortSoap11">
+      <soap:address location="http://localhost:8080/ws/especialidad"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws/especialidad</con:endpoint></con:endpoints><con:operation id="362f0bd9-88c9-4092-9722-4e276a4fa061" isOneWay="false" action="" name="getEspecialidad" bindingOperationName="getEspecialidad" type="Request-Response" outputName="getEspecialidadResponse" inputName="getEspecialidadRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9565d7a5-eb34-438e-bca5-e004231a6b42" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/especialidad</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getEspecialidadRequest>\r
+         <obj:id>1</obj:id>\r
+      </obj:getEspecialidadRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/EspecialidadesPort/getEspecialidadRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d0d56206-fad7-4c7c-871d-797c6039df3c" isOneWay="false" action="" name="getEspecialidades" bindingOperationName="getEspecialidades" type="Request-Response" outputName="getEspecialidadesResponse" inputName="getEspecialidadesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="435802af-6867-46f2-b507-d8efe352c411" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/especialidad</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getEspecialidadesRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/EspecialidadesPort/getEspecialidadesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a4acd491-924f-4866-b63a-ea63f423d976" isOneWay="false" action="" name="postEspecialidad" bindingOperationName="postEspecialidad" type="Request-Response" outputName="postEspecialidadResponse" inputName="postEspecialidadRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5d624b4b-5b49-4551-a771-dc0b582696a1" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/especialidad</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postEspecialidadRequest>\r
+         <obj:especialidad>\r
+            <obj:id>?</obj:id>\r
+            <obj:nombre>Prueba de especialidad</obj:nombre>\r
+            <obj:descripcion>Esto es una breve descripcion</obj:descripcion>\r
+         </obj:especialidad>\r
+      </obj:postEspecialidadRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/EspecialidadesPort/postEspecialidadRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a3673aa1-cad1-4984-b8bb-4b3260f15d89" isOneWay="false" action="" name="putEspecialidad" bindingOperationName="putEspecialidad" type="Request-Response" outputName="putEspecialidadResponse" inputName="putEspecialidadRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7e889fe8-62e9-4999-bc17-9f9bbaf3f3c4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws/especialidad</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/object">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:putEspecialidadRequest>\r
+         <obj:especialidad>\r
+            <obj:id>9</obj:id>\r
+            <obj:nombre>Actualizando nombre de especialidad</obj:nombre>\r
+            <obj:descripcion>Cambiando descripcion</obj:descripcion>\r
+         </obj:especialidad>\r
+      </obj:putEspecialidadRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/object/EspecialidadesPort/putEspecialidadRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

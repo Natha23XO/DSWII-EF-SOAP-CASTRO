@@ -1,0 +1,78 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/object"
+           targetNamespace="http://www.cibertec.edu.pe/ws/object"
+           elementFormDefault="qualified">
+
+    <!--Modelo Medicamento-->
+    <xs:complexType name="medicamentows">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="descripcion" type="xs:string"/>
+            <xs:element name="precio" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--POST Medicamento-->
+    <xs:element name="postMedicamentoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicamento" type="tns:medicamentows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="postMedicamentoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicamento" type="tns:medicamentows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--PUT Medicamento-->
+    <xs:element name="putMedicamentoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicamento" type="tns:medicamentows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="putMedicamentoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicamento" type="tns:medicamentows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Medicamentos busqueda general-->
+    <xs:element name="getMedicamentosRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getMedicamentosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicamentos" type="tns:medicamentows" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Medicamento busqueda por ID-->
+    <xs:element name="getMedicamentoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getMedicamentoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicamento" type="tns:medicamentows"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

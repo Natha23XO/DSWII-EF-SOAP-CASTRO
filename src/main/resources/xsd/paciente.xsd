@@ -1,0 +1,79 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/object"
+           targetNamespace="http://www.cibertec.edu.pe/ws/object"
+           elementFormDefault="qualified">
+
+    <!--Modelo Paciente-->
+    <xs:complexType name="pacientews">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="direccion" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+            <xs:element name="fechanacimiento" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--POST Paciente-->
+    <xs:element name="postPacienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paciente" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="postPacienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paciente" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--PUT Paciente-->
+    <xs:element name="putPacienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paciente" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="putPacienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paciente" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Pacientes busqueda general-->
+    <xs:element name="getPacientesRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getPacientesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pacientes" type="tns:pacientews" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--Paciente busqueda por ID-->
+    <xs:element name="getPacienteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getPacienteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paciente" type="tns:pacientews"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
